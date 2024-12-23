@@ -5,9 +5,7 @@ import customtkinter
 from tkdial import *
 
 #imports math libraries for question system
-import math
 import random
-import time
 
 #app init
 class App(customtkinter.CTk):
@@ -245,7 +243,7 @@ class App(customtkinter.CTk):
         self.next_question()
         
     def check_answer(self, answer):
-        if int(answer) == round(eval(str(str(self.num1) + self.eval_operations[self.quiz] + str(self.num2)))):
+        if round(float(answer), 3) == round(eval(str(str(self.num1) + self.eval_operations[self.quiz] + str(self.num2))), 3):
             self.num_correct += 1
         else:
             pass
@@ -264,6 +262,7 @@ class App(customtkinter.CTk):
         self.questions_left -= 1
         
     def finish_quiz(self):
+        self.num_correct = 0
         self.swap_windows_right()
             
     
